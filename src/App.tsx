@@ -20,6 +20,8 @@ function App() {
   const [audioSrc, setAudioSrc] = useState<string | null>(null);
   const [jsonData, setJsonData] = useState<any>(null);
 
+  console.log(jsonData);
+
   useEffect(() => {
     const audioElement = audioRef.current;
     if (!audioElement) return;
@@ -55,6 +57,7 @@ function App() {
       const reader = new FileReader();
       reader.onload = (event) => {
         const jsonContent = event.target?.result;
+
         setJsonData(JSON.parse(jsonContent as string));
       };
       reader.readAsText(file);
@@ -92,10 +95,10 @@ function App() {
           </div>
         </div>
 
-        <div className="max-h-screen lg:overflow-y-auto scroll-auto px-4">
+        <div className="max-h-[85vh] lg:overflow-y-auto scroll-auto px-4">
           {jsonData &&
             jsonData.content.map((item: Item, index: number) => (
-              <div key={index} className="">
+              <div key={index} className="mb-4">
                 {item.lines.map((line: Line) => (
                   <p
                     key={line.begin}
