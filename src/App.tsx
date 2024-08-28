@@ -102,12 +102,15 @@ function App() {
                 {item.lines.map((line: Line) => (
                   <p
                     key={line.begin}
-                    className={
+                    style={{
+                      fontFamily: "Tiro Devanagari Sanskrit",
+                    }}
+                    className={`${
                       currentTime >= Number(line.begin) &&
                       currentTime < Number(line.end)
-                        ? "text-red-500 text-xl"
+                        ? "text-red-700 text-xl"
                         : "text-lg"
-                    }
+                    } `}
                   >
                     {line.text.includes("\n") ? (
                       line.text
